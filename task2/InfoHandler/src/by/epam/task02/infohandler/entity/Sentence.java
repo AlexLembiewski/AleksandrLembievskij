@@ -1,0 +1,95 @@
+package by.epam.task02.infohandler.entity;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ *
+ * @author Администратор
+ */
+public class Sentence implements Composite<SentencePart>,
+                                 Comparable<Sentence> {
+
+    private List<SentencePart> sentence;
+
+    public Sentence() {
+        this.sentence = new LinkedList<>();
+    }
+
+    @Override
+    public void add(SentencePart sentencePart) {
+        sentence.add(sentencePart);
+    }
+
+    @Override
+    public void remove(SentencePart sentencePart) {
+        sentence.remove(sentencePart);
+    }
+
+    @Override
+    public SentencePart getChildElement(int index) {
+        return sentence.get(index);
+    }
+
+    @Override
+    public List<SentencePart> getAllElements() {
+        return sentence;
+    }
+
+    @Override
+    public void printToConsole() {
+        StringBuilder sb = new StringBuilder();
+        for (SentencePart part : sentence) {
+            if (part instanceof Word) {
+                System.out.print(" " + part.getValue());
+            } else {
+                System.out.print(part.getValue());
+            }
+        }
+    }
+
+    public int getNumberOfWords() {
+        int count = 0;
+        for (SentencePart sp : sentence) {
+            if (sp instanceof Word) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int compareTo(Sentence o) {
+        Sentence newSentence = (Sentence) o;
+        return Integer.compare(this.getNumberOfWords(), newSentence.getNumberOfWords());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.sentence);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sentence other = (Sentence) obj;
+        if (!Objects.equals(this.sentence, other.sentence)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Sentence{" + "sentence=" + sentence + '}';
+    }
+
+}
