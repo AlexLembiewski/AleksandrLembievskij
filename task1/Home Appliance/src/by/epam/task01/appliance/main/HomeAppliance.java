@@ -6,7 +6,7 @@ import by.epam.task01.appliance.entity.Appliance;
 import by.epam.task01.appliance.entity.Fridge;
 import by.epam.task01.appliance.entity.TV;
 import by.epam.task01.appliance.entity.Toaster;
-import by.epam.task01.appliance.entity.Type;
+import by.epam.task01.appliance.entity.ApplienceType;
 import by.epam.task01.appliance.entity.WashingMachine;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,21 +28,21 @@ public class HomeAppliance {
         List<Appliance> appliances = new ArrayList();
 
         Fridge fridge = (Fridge) SimpleApplianceFactory
-                .createAppliance(Type.FRIDGE);
+                .createAppliance(ApplienceType.FRIDGE);
         fridge.setPowerConsumption(660);
         fridge.setPowerOn(true);
-        
+
         Toaster toaster = (Toaster) SimpleApplianceFactory
-                .createAppliance(Type.TOASTER);
+                .createAppliance(ApplienceType.TOASTER);
         toaster.setPowerConsumption(350);
 
         TV tv = (TV) SimpleApplianceFactory
-                .createAppliance(Type.TVSET);
+                .createAppliance(ApplienceType.TVSET);
         tv.setPowerConsumption(150);
         tv.setPowerOn(true);
 
         WashingMachine washmachine = (WashingMachine) SimpleApplianceFactory
-                .createAppliance(Type.WASHINGMACHINE);
+                .createAppliance(ApplienceType.WASHINGMACHINE);
         washmachine.setPowerConsumption(700);
         washmachine.setPowerOn(true);
 
@@ -52,12 +52,18 @@ public class HomeAppliance {
         appliances.add(washmachine);
 
         ApplianceWorker applianceWorker = new ApplianceWorker(appliances);
-        System.out.println("Total power consumption: " 
+        System.out.println("Total power consumption: "
                 + applianceWorker.getTotalPowerConsumption() + "W");//текущее энергопотребление
-        
-        applianceWorker.sortAppliances();            //сортировка электроприборов
-        applianceWorker.selectByPowerConsumption(300, 660); //выборка электроприборов по потреблению
+        List<Appliance> sortedAppliances = applianceWorker.sortAppliances(); //сортировка электроприборов
+        for (Appliance applience : sortedAppliances) {
+            System.out.println(applience.toString());
+        }
 
+        List<Appliance> selectedApplienceList = applianceWorker.selectByPowerConsumption(300, 660); //выборка электроприборов по потреблению
+        System.out.println("Appliances with the power consumption in selected range:");
+        for (Appliance applience : selectedApplienceList) {
+            System.out.println(applience.toString());
+        }
     }
 
 }

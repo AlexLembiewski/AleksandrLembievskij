@@ -32,8 +32,12 @@ public class Toaster extends Appliance{
 
     @Override
     public String toString() {
-        return new StringBuilder().append(super.toString()).append(" numberOfSlots=")
-                .append(numberOfSlots).append(", numberOfToasts=")
+        return new StringBuilder(super.toString())
+                .append(" ")
+                .append(getClass().getSimpleName())
+                .append(" numberOfSlots=")
+                .append(numberOfSlots)
+                .append(", numberOfToasts=")
                 .append(numberOfToasts).toString();
     }
     

@@ -26,17 +26,17 @@ public class InfoHandler {
         TextParser tp = new TextParser();
         Text text = tp.parse("task2text.txt");
         log.trace("Plain text");
-        text.printToConsole();
+        System.out.println(text.getTextAsString());
         
          //12 subtask
          TextWorker.removeWordsStartWithConsonant(text, 6);
-         text.printToConsole();
+         System.out.println(text.getTextAsString());
          //2 subtask
          TextWorker.sortBySentence(text);
-         text.printToConsole();
+         System.out.println(text.getTextAsString());
          //5 subtask
          TextWorker.swapWords(text);
-         text.printToConsole();
+         System.out.println(text.getTextAsString());
          
     }
 

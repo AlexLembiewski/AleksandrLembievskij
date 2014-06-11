@@ -16,10 +16,10 @@ public class Resources extends ListResourceBundle {
     @Override
     protected Object[][] getContents() {
         return new Object[][] {
-            {"sentence_pattern", "([A-Za-z_0-9](|[^?!.\\(]|\\([^\\)]*\\))*[?!.]|\\w.+:)"},
-            {"header_pattern", "1.+"},
-            {"output_pattern", "(G.+) = (.+)"},
-            {"word_punct_pattern", "([a-zA-Z0-9-])+|(['.,?!><=();:])"}
+            {ApplicationValue.SENTENCE, "([A-Za-z_0-9](|[^?!.\\(]|\\([^\\)]*\\))*[?!.]|\\w.+:)"},
+            {ApplicationValue.HEADER, "1.+"},
+            {ApplicationValue.OUTPUT, "(G.+) = (.+)"},
+            {ApplicationValue.WORD_PUNCUATION, "([a-zA-Z0-9-])+|(['.,?!><=();:])"}
         };
     }
 

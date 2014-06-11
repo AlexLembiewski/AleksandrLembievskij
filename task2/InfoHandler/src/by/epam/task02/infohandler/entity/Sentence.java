@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author Администратор
  */
 public class Sentence implements Composite<SentencePart>,
-                                 Comparable<Sentence> {
+        Comparable<Sentence> {
 
     private List<SentencePart> sentence;
 
@@ -37,16 +37,16 @@ public class Sentence implements Composite<SentencePart>,
         return sentence;
     }
 
-    @Override
-    public void printToConsole() {
+    public String getAsString() {
         StringBuilder sb = new StringBuilder();
         for (SentencePart part : sentence) {
             if (part instanceof Word) {
-                System.out.print(" " + part.getValue());
+                sb.append(" ").append(part.getValue());
             } else {
-                System.out.print(part.getValue());
+                sb.append(part.getValue());
             }
         }
+        return sb.toString();
     }
 
     public int getNumberOfWords() {
@@ -89,7 +89,10 @@ public class Sentence implements Composite<SentencePart>,
 
     @Override
     public String toString() {
-        return "Sentence{" + "sentence=" + sentence + '}';
+        return new StringBuilder(super.toString())
+                .append(getClass().getSimpleName())
+                .append(" sentence=")
+                .append(sentence).toString();
     }
 
 }

@@ -42,7 +42,7 @@ public class TextWorker {
         
     public static void swapWords(Text text) {
         log.trace("Subtask N5");
-        LinkedList<Sentence> allElements = text.getAllElements();
+        LinkedList<Sentence> allElements = (LinkedList<Sentence>)text.getAllElements();
         for(Sentence sentenceOrListing : allElements) {
             if(sentenceOrListing.getClass() != Listing.class) {
                 int indexFirst = 0;

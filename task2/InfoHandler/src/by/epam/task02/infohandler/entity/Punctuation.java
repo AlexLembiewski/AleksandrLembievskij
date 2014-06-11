@@ -52,7 +52,9 @@ public class Punctuation implements SentencePart{
 
     @Override
     public String toString() {
-        return "Punctuation{" + "value=" + value + '}';
+        return new StringBuilder(super.toString())
+                .append(" value=")
+                .append(value).toString();
     }
 
     

@@ -1,4 +1,3 @@
-
 package by.epam.task02.infohandler.entity;
 
 import java.util.List;
@@ -28,13 +27,19 @@ public class Listing extends Sentence {
     }
 
     @Override
-    public String toString() {
-        return value;
+    public String getAsString() {
+        return getValue();
     }
 
+    
+    
+    
     @Override
-    public void printToConsole() {
-        System.out.print(value);
+    public String toString() {
+        return new StringBuilder(super.toString())
+                .append(getClass().getSimpleName())
+                .append(" ")
+                .append(value).toString();
     }
 
     @Override
@@ -84,7 +89,5 @@ public class Listing extends Sentence {
         }
         return true;
     }
-    
-    
 
 }

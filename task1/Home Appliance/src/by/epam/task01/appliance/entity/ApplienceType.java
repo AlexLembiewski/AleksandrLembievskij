@@ -9,6 +9,6 @@ package by.epam.task01.appliance.entity;
  *
  * @author Alex
  */
-public enum Type {
+public enum ApplienceType {
     FRIDGE, TVSET, TOASTER, WASHINGMACHINE
 }

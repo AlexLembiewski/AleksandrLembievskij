@@ -4,7 +4,7 @@ import by.epam.task01.appliance.entity.Appliance;
 import by.epam.task01.appliance.entity.Fridge;
 import by.epam.task01.appliance.entity.TV;
 import by.epam.task01.appliance.entity.Toaster;
-import by.epam.task01.appliance.entity.Type;
+import by.epam.task01.appliance.entity.ApplienceType;
 import by.epam.task01.appliance.entity.WashingMachine;
 
 /**
@@ -18,13 +18,13 @@ public  class SimpleApplianceFactory {
   * @return Новый электроприбор 
   */ 
     public static Appliance createAppliance(Enum type) {
-        if (type == Type.FRIDGE) {
+        if (type == ApplienceType.FRIDGE) {
             return new Fridge();
-        } else if (type == Type.TOASTER) {
+        } else if (type == ApplienceType.TOASTER) {
             return new Toaster();
-        } else if (type == Type.TVSET) {
+        } else if (type == ApplienceType.TVSET) {
             return new TV();
-        } else if (type == Type.WASHINGMACHINE) {
+        } else if (type == ApplienceType.WASHINGMACHINE) {
             return new WashingMachine();
         }
         throw new IllegalArgumentException("No such appliance " + type.toString());

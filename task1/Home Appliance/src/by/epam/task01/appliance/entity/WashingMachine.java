@@ -11,6 +11,7 @@ package by.epam.task01.appliance.entity;
  * @author Alex
  */
 public class WashingMachine extends Appliance{
+    
     private int maxLoading; //макс. загрузка
     private int spinSpeed;  //скорость вращения
     private int numberOfPrograms;  //количество программ
@@ -50,10 +51,16 @@ public class WashingMachine extends Appliance{
 
     @Override
     public String toString() {
-        return new StringBuilder().append(super.toString()).append(" maxLoading=")
-                .append(maxLoading).append(", spinSpeed=")
-                .append(spinSpeed).append(", numberOfPrograms=").append(numberOfPrograms)
-                .append(", waterConsumption=").append(waterConsumption).toString();
+        return new StringBuilder(super.toString())
+                .append(this.getClass().getSimpleName())
+                .append(" maxLoading=")
+                .append(maxLoading)
+                .append(", spinSpeed=")
+                .append(spinSpeed)
+                .append(", numberOfPrograms=")
+                .append(numberOfPrograms)
+                .append(", waterConsumption=")
+                .append(waterConsumption).toString();
     }
 
     @Override

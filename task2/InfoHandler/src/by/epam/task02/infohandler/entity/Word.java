@@ -58,7 +58,10 @@ public class Word implements SentencePart{
 
     @Override
     public String toString() {
-        return "Word{" + "value=" + value + '}';
+        return new StringBuilder(super.toString())
+                .append(getClass().getSimpleName())
+                .append(" value=")
+                .append(value).toString();
     }
     
     

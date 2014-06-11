@@ -95,14 +95,26 @@ public abstract class Appliance implements Comparable<Appliance> {
     
     @Override
     public String toString() {
-        return new StringBuilder().append(getClass().getSimpleName())
-                .append(" brandName=").append(brandName).append(", model=")
-                .append(model).append(", powerConsumption=")
-                .append(powerConsumption).append(", noiseLevel=")
-                .append(noiseLevel).append(", weight=").append(weight)
-                .append(", height=").append(height).append(", width=")
-                .append(width).append(", depth=").append(depth)
-                .append(", powerOn=").append(powerOn).toString();
+        return new StringBuilder(this.getClass().getSimpleName())
+                .append(" ")
+                .append(" brandName=")
+                .append(brandName)
+                .append(", model=")
+                .append(model)
+                .append(", powerConsumption=")
+                .append(powerConsumption)
+                .append(", noiseLevel=")
+                .append(noiseLevel)
+                .append(", weight=")
+                .append(weight)
+                .append(", height=")
+                .append(height)
+                .append(", width=")
+                .append(width)
+                .append(", depth=")
+                .append(depth)
+                .append(", powerOn=")
+                .append(powerOn).toString();
     }
 
     @Override

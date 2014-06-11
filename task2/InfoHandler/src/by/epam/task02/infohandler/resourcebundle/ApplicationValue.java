@@ -10,7 +10,7 @@ package by.epam.task02.infohandler.resourcebundle;
  *
  * @author Администратор
  */
-public class Const {
+public class ApplicationValue {
     public static final String SENTENCE = "sentence_pattern";
     public static final String HEADER = "header_pattern";
     public static final String OUTPUT = "output_pattern";

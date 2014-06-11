@@ -14,6 +14,5 @@ public interface Composite<T> {
     public T getChildElement(int index);
     public List getAllElements();
     public void remove(T value);
-    public void printToConsole();
 
 }

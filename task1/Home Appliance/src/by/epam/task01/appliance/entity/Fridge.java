@@ -41,9 +41,15 @@ public class Fridge extends Appliance {
 
     @Override
     public String toString() {
-        return new StringBuilder().append(super.toString()).append(" refrigeratorCapacity=")
-                .append(refrigeratorCapacity).append(", freezeCapacity=").append(freezeCapacity)
-                .append(", freezeTemperature=").append(freezeTemperature).toString();
+        return new StringBuilder(super.toString())
+                .append(" ")
+                .append(getClass().getSimpleName())
+                .append(" refrigeratorCapacity=")
+                .append(refrigeratorCapacity)
+                .append(", freezeCapacity=")
+                .append(freezeCapacity)
+                .append(", freezeTemperature=")
+                .append(freezeTemperature).toString();
     }
 
     @Override

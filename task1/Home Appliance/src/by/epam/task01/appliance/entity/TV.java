@@ -32,8 +32,11 @@ public class TV extends Appliance {
 
     @Override
     public String toString() {
-        return new StringBuilder().append(super.toString())
-                .append(" screenSize=").append(screenSize)
+        return new StringBuilder(super.toString())
+                .append(" ")
+                .append(getClass().getSimpleName())
+                .append(" screenSize=")
+                .append(screenSize)
                 .append(", clearMotionRate=")
                 .append(clearMotionRate).toString();
     }

@@ -10,7 +10,7 @@ import by.epam.task02.infohandler.entity.Punctuation;
 import by.epam.task02.infohandler.entity.Sentence;
 import by.epam.task02.infohandler.entity.Text;
 import by.epam.task02.infohandler.entity.Word;
-import by.epam.task02.infohandler.resourcebundle.Const;
+import by.epam.task02.infohandler.resourcebundle.ApplicationValue;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -38,21 +38,21 @@ public class TextParser {
                 BufferedReader br = new BufferedReader(new InputStreamReader(in));
                 
                 ResourceBundle bundle;
-                bundle = ResourceBundle.getBundle(Const.BUNDLE_LOCATION);
+                bundle = ResourceBundle.getBundle(ApplicationValue.BUNDLE_LOCATION);
                 
                 String textLine;
                 text = new Text();
                 while ((textLine = br.readLine()) != null) {
                     //header check
-                    if (textLine.matches(bundle.getString(Const.HEADER))) {
+                    if (textLine.matches(bundle.getString(ApplicationValue.HEADER))) {
                         text.add(makeSentence(textLine.trim()));
-                    } else if (textLine.trim().matches(bundle.getString(Const.OUTPUT))) {
+                    } else if (textLine.trim().matches(bundle.getString(ApplicationValue.OUTPUT))) {
                         text.add(makeSentence(textLine.trim()));
                     } //listing check
                     else if (isCode(textLine)) {
                         text.add(new Listing(textLine));
                     } else { //split to sentences
-                        Pattern sentencePattern = Pattern.compile(bundle.getString(Const.SENTENCE));
+                        Pattern sentencePattern = Pattern.compile(bundle.getString(ApplicationValue.SENTENCE));
                         Matcher sentenceMatcher = sentencePattern.matcher(textLine);
                         while (sentenceMatcher.find()) {
                             String sentenceString = sentenceMatcher.group();
@@ -69,8 +69,8 @@ public class TextParser {
 
     private Sentence makeSentence(String sourceString) {
         ResourceBundle bundle;
-        bundle = ResourceBundle.getBundle(Const.BUNDLE_LOCATION);
-        Pattern wordPattern = Pattern.compile(bundle.getString(Const.WORD_PUNCUATION));
+        bundle = ResourceBundle.getBundle(ApplicationValue.BUNDLE_LOCATION);
+        Pattern wordPattern = Pattern.compile(bundle.getString(ApplicationValue.WORD_PUNCUATION));
         Matcher wordMatcher = wordPattern.matcher(sourceString);
         Sentence sentence = new Sentence();
         while (wordMatcher.find()) {
