@@ -11,7 +11,7 @@ import java.util.ListResourceBundle;
  *
  * @author Администратор
  */
-public class Resources extends ListResourceBundle {
+public class Resources extends ListResourceBundle {//mn chislo
 
     @Override
     protected Object[][] getContents() {
