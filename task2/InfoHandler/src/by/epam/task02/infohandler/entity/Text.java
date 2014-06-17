@@ -22,14 +22,14 @@ public class Text implements Composite<Sentence> {
         return textParts.get(index);
     }
     
-    public String getTextAsString() {
-        StringBuilder sb = new StringBuilder();
-        for (Sentence textpart : textParts) {
-                sb.append(textpart.getAsString())
-                        .append("\n");
-        }
-        return sb.toString();
-    }
+//    public String getTextAsString() {
+//        StringBuilder sb = new StringBuilder();
+//        for (Sentence textpart : textParts) {
+//                sb.append(textpart.getAsString())
+//                        .append("\n");
+//        }
+//        return sb.toString();
+//    }
 
     @Override
     public List<Sentence> getAllElements() {
