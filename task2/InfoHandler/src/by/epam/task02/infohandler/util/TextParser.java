@@ -12,7 +12,6 @@ import by.epam.task02.infohandler.entity.Text;
 import by.epam.task02.infohandler.entity.Word;
 import by.epam.task02.infohandler.resourcebundle.ApplicationValue;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,32 +33,30 @@ public class TextParser {
         Text text = null;
         try {
             FileInputStream fstream = new FileInputStream(pathToFile);
-            try (DataInputStream in = new DataInputStream(fstream)) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                
-                ResourceBundle bundle;
-                bundle = ResourceBundle.getBundle(ApplicationValue.BUNDLE_LOCATION);
-                
-                String textLine;
-                text = new Text();
-                while ((textLine = br.readLine()) != null) {
-                    //header check
-                    if (textLine.matches(bundle.getString(ApplicationValue.HEADER))) {
-                        text.add(makeSentence(textLine.trim()));
-                    } else if (textLine.trim().matches(bundle.getString(ApplicationValue.OUTPUT))) {
-                        text.add(makeSentence(textLine.trim()));
-                    } //listing check
-                    else if (isCode(textLine)) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+            ResourceBundle bundle;
+            bundle = ResourceBundle.getBundle(ApplicationValue.BUNDLE_LOCATION);
+
+            String textLine;
+            text = new Text();
+            while ((textLine = br.readLine()) != null) {
+                if ((textLine.matches(bundle.getString(ApplicationValue.HEADER))
+                        || (textLine.trim().matches(bundle.getString(ApplicationValue.OUTPUT))))) {
+                    text.add(splitSetenceByWordsAndPunctuation(textLine));
+                } else { //split to sentences
+                    if (isCode(textLine)) {//listing check
                         text.add(new Listing(textLine));
-                    } else { //split to sentences
+                    } else {
                         Pattern sentencePattern = Pattern.compile(bundle.getString(ApplicationValue.SENTENCE));
                         Matcher sentenceMatcher = sentencePattern.matcher(textLine);
                         while (sentenceMatcher.find()) {
                             String sentenceString = sentenceMatcher.group();
-                            text.add(makeSentence(sentenceString));
+                            text.add(splitSetenceByWordsAndPunctuation(sentenceString));
                         }
                     }
                 }
+
             }
         } catch (IOException e) {
             log.error(e);
@@ -67,7 +64,7 @@ public class TextParser {
         return text;
     }
 
-    private Sentence makeSentence(String sourceString) {
+    private Sentence splitSetenceByWordsAndPunctuation(String sourceString) {
         ResourceBundle bundle;
         bundle = ResourceBundle.getBundle(ApplicationValue.BUNDLE_LOCATION);
         Pattern wordPattern = Pattern.compile(bundle.getString(ApplicationValue.WORD_PUNCUATION));

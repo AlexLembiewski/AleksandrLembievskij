@@ -29,7 +29,7 @@ public class InfoHandler {
         System.out.println(text.getTextAsString());
         
          //12 subtask
-         TextWorker.removeWordsStartWithConsonant(text, 6);
+         TextWorker.removeWordsStartWithConsonant(text, 4);
          System.out.println(text.getTextAsString());
          //2 subtask
          TextWorker.sortBySentence(text);
