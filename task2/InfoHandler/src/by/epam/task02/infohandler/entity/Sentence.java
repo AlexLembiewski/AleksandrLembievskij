@@ -37,18 +37,6 @@ public class Sentence implements Composite<SentencePart>,
         return sentence;
     }
 
-//    public String getAsString() {
-//        StringBuilder sb = new StringBuilder();
-//        for (SentencePart part : sentence) {
-//            if (part instanceof Word) {
-//                sb.append(" ").append(part.getValue());
-//            } else {
-//                sb.append(part.getValue());
-//            }
-//        }
-//        return sb.toString();
-//    }
-
     public int getNumberOfWords() {
         int count = 0;
         for (SentencePart sp : sentence) {

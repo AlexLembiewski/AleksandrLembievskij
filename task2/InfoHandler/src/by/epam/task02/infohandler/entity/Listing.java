@@ -27,10 +27,6 @@ public class Listing extends Sentence {
         this.value = value;
     }
 
-//    @Override
-//    public String getAsString() {
-//        return getValue();
-//    }
     @Override
     public String toString() {
         return new StringBuilder(super.toString())
