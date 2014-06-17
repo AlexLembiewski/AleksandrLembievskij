@@ -24,7 +24,6 @@ public class TextWorker {
 
     private static final Logger log = Logger.getLogger(TextWorker.class);
 
-    //2
     /**
      * Method sorts the sentences in the text by the number of words
      *
@@ -35,7 +34,6 @@ public class TextWorker {
         Collections.sort(text.getAllElements());
     }
 
-    //5
     /**
      * Method swaps first and last word in a sentence
      *
@@ -69,7 +67,7 @@ public class TextWorker {
         }
     }
 
-    //12
+    
     /**
      * This method removes the words fixed length starting with consonant letter
      *

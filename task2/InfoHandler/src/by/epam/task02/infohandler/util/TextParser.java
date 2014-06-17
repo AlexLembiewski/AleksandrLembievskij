@@ -27,7 +27,7 @@ import org.apache.log4j.Logger;
 public class TextParser {
 
     private static final Logger log = Logger.getLogger(TextParser.class);
-    private int braceCount;
+    private int braceCount; //счетчик фигурных скобок
 
     public Text parse(String pathToFile) {
         Text text = null;
@@ -43,7 +43,7 @@ public class TextParser {
             while ((textLine = br.readLine()) != null) {
                 if ((textLine.matches(bundle.getString(ApplicationValue.HEADER))
                         || (textLine.trim().matches(bundle.getString(ApplicationValue.OUTPUT))))) {
-                    text.add(splitSetenceByWordsAndPunctuation(textLine));
+                    text.add(splitSentenceByWordsAndPunctuation(textLine));
                 } else { //split to sentences
                     if (isCode(textLine)) {//listing check
                         text.add(new Listing(textLine));
@@ -52,7 +52,7 @@ public class TextParser {
                         Matcher sentenceMatcher = sentencePattern.matcher(textLine);
                         while (sentenceMatcher.find()) {
                             String sentenceString = sentenceMatcher.group();
-                            text.add(splitSetenceByWordsAndPunctuation(sentenceString));
+                            text.add(splitSentenceByWordsAndPunctuation(sentenceString));
                         }
                     }
                 }
@@ -64,7 +64,7 @@ public class TextParser {
         return text;
     }
 
-    private Sentence splitSetenceByWordsAndPunctuation(String sourceString) {
+    private Sentence splitSentenceByWordsAndPunctuation(String sourceString) {
         ResourceBundle bundle;
         bundle = ResourceBundle.getBundle(ApplicationValue.BUNDLE_LOCATION);
         Pattern wordPattern = Pattern.compile(bundle.getString(ApplicationValue.WORD_PUNCUATION));
