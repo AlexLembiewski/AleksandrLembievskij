@@ -42,13 +42,23 @@ public class SAXParser implements IXMLParser{
                 }
 
                 @Override
+                public void characters(char[] ch, int start, int length) throws SAXException {
+                    if(thisElement.equals("name")) {
+                    
+                    
+                    }
+                }
+                
+                
+                
+                @Override
                 public void endElement(String uri, String localName, String qName) throws SAXException {
-                    super.endElement(uri, localName, qName); //To change body of generated methods, choose Tools | Templates.
+                    thisElement = ""; 
                 }
 
                 @Override
                 public void endDocument() throws SAXException {
-                    super.endDocument(); //To change body of generated methods, choose Tools | Templates.
+                    System.out.println("Stop parse XML..."); 
                 }
                 
                 

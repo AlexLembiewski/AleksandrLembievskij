@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Администратор/Documents/NetBeansProjects/PortShipment/src/by/epam/task3/portshipment/entity/Port.java</file>
-            <file>file:/C:/Users/Администратор/Documents/NetBeansProjects/PortShipment/src/by/epam/task3/portshipment/dispatcher/Dispatcher.java</file>
-            <file>file:/C:/Users/Администратор/Documents/NetBeansProjects/PortShipment/src/by/epam/task3/portshipment/entity/Ship.java</file>
-            <file>file:/C:/Users/Администратор/Documents/NetBeansProjects/PortShipment/src/by/epam/task3/portshipment/run/PortShipment.java</file>
-            <file>file:/C:/Users/Администратор/Documents/NetBeansProjects/PortShipment/test/by/epam/task3/portshipment/entity/ShipTest.java</file>
-            <file>file:/C:/Users/Администратор/Documents/NetBeansProjects/PortShipment/test/by/epam/task3/portshipment/entity/PortTest.java</file>
+            <file>file:/D:/GitHub/AleksandrLembievskij/task3/PortShipment/test/by/epam/task3/portshipment/entity/PortTest.java</file>
+            <file>file:/D:/GitHub/AleksandrLembievskij/task3/PortShipment/test/by/epam/task3/portshipment/entity/ShipTest.java</file>
+            <file>file:/D:/GitHub/AleksandrLembievskij/task3/PortShipment/src/log4j.properties</file>
         </group>
     </open-files>
 </project-private>
