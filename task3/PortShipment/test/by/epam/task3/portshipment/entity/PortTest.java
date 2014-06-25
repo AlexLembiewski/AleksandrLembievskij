@@ -6,6 +6,9 @@
 
 package by.epam.task3.portshipment.entity;
 
+import by.epam.task3.portshipment.exception.PortException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -65,12 +68,16 @@ public class PortTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Port anotherPort = new Port(80, 50, 2);
-        Port instance = new Port(80, 50, 2);
-        boolean expResult = true;
-        boolean result = instance.equals(anotherPort);
-        assertEquals(expResult, result);
+        try {
+            System.out.println("equals");
+            Port anotherPort = new Port(80, 50, 2);
+            Port instance = new Port(80, 50, 2);
+            boolean expResult = true;
+            boolean result = instance.equals(anotherPort);
+            assertEquals(expResult, result);
+        } catch (PortException ex) {
+            Logger.getLogger(PortTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
      
     }
     

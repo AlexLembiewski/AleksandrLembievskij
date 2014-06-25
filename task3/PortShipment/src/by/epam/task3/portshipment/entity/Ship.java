@@ -1,10 +1,12 @@
 package by.epam.task3.portshipment.entity;
 
 import by.epam.task3.portshipment.dispatcher.Dispatcher;
+import by.epam.task3.portshipment.exception.ShipException;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import static by.epam.task3.portshipment.entity.EntityLiteral.*;
 
 /**
  *
@@ -24,17 +26,24 @@ public class Ship implements Runnable {
 
     }
 
-    public Ship(Port port, String name, int cargo, int capacity) {
-
-        this.port = port;
-        this.name = name;
-        this.capacity = capacity;
-        if (cargo <= capacity) {
-            this.cargo = cargo;
-        } else {
-            this.cargo = capacity;
+    public Ship(Port port, String name, int cargo, int capacity) throws ShipException {
+        try {
+            if (port == null) {
+                throw new IllegalArgumentException(PORT + port);
+            } else if (name == null || name.isEmpty()) {
+                throw new IllegalArgumentException(NAME + name);
+            } else if (capacity <= 0) {
+                throw new IllegalArgumentException(CAPACITY + capacity);
+            } else if (cargo < 0) {
+                throw new IllegalArgumentException(CARGO + cargo);
+            }
+            this.port = port;
+            this.name = name;
+            this.capacity = capacity;
+            this.cargo = (cargo > capacity) ? capacity : cargo;
+        } catch (IllegalArgumentException e) {
+            throw new ShipException(INVALID_PARAMETER + e.getMessage());
         }
-
     }
 
     public int getCapacity() {
@@ -78,13 +87,13 @@ public class Ship implements Runnable {
             unload();
         }
     }
-    
+
     private void unload() {
-        lock.lock();
+        boolean loading = false;
         Dispatcher.informShipMoored(name);
         try {
-            log.info(Dispatcher.informShipAction(name, false));
-
+            lock.lock();
+            log.info(Dispatcher.informShipAction(name, loading));
             if ((port.getCapacity() - port.getLoading() >= cargo)) {
                 port.increaseLoading(cargo);
                 cargo = 0;
@@ -92,7 +101,7 @@ public class Ship implements Runnable {
                 log.info(Dispatcher.rejectShip(name));
             }
         } finally {
-            log.info(Dispatcher.informShipFinished(name, false));
+            log.info(Dispatcher.informShipFinished(name, loading));
             Dispatcher.informShipSailingAway(name);
             lock.unlock();
             Dispatcher.makeReport(this, port);
@@ -103,23 +112,26 @@ public class Ship implements Runnable {
     public int getFreeSpace() {
         return capacity - cargo;
     }
-    
+
     private void load() {
+        
         int shipFreeSpace = getFreeSpace();
-        lock.lock();
+        boolean loading = true; 
         Dispatcher.informShipMoored(name);
+
         try {
-            log.info(Dispatcher.informShipAction(name, true));
+            lock.lock();
+            log.info(Dispatcher.informShipAction(name, loading));
             if (shipFreeSpace <= port.getLoading()) {
                 cargo += shipFreeSpace;
                 port.decreaseLoading(shipFreeSpace);
-              
+
             } else {
                 cargo += port.getLoading();
                 port.setLoading(0);
             }
         } finally {
-            log.info(Dispatcher.informShipFinished(name, true));
+            log.info(Dispatcher.informShipFinished(name, loading));
             Dispatcher.informShipSailingAway(name);
             lock.unlock();
             Dispatcher.makeReport(this, port);
@@ -129,10 +141,10 @@ public class Ship implements Runnable {
     @Override
     public String toString() {
         return new StringBuilder(getClass().getSimpleName()).append('{')
-                .append("cargo=").append(cargo)
-                .append(", port=").append(port)
-                .append(", name=").append(name)
-                .append(", capacity=").append(capacity).append('}')
+                .append(CARGO).append(cargo)
+                .append(",").append(PORT).append(port)
+                .append(",").append(NAME).append(name)
+                .append(",").append(CAPACITY).append(capacity).append('}')
                 .toString();
     }
 
@@ -170,6 +182,4 @@ public class Ship implements Runnable {
         return true;
     }
 
-    
-    
 }

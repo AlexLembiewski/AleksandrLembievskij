@@ -18,17 +18,17 @@ public class Dispatcher {
     
     private static final Logger log = Logger.getLogger(Dispatcher.class);
     
-    public static String informShipAction(String ship, boolean loadingState) {
+    public static String informShipAction(String ship, boolean isLoading) {
         return new StringBuilder(ship)
-            .append(loadingState ? " is loading..." : " is unloading...").toString();
+            .append(isLoading ? " is loading..." : " is unloading...").toString();
         
     }
     
-    public static String informShipFinished(String ship, boolean loadingState) {
+    public static String informShipFinished(String ship, boolean isLoading) {
         return new StringBuilder(ship)
-                .append(loadingState ? " has finished loading" : " has finished unloading").toString();
+                .append(isLoading ? " has finished loading" : " has finished unloading").toString();
     }
-   
+    
     public static String rejectShip(String ship) {
         return new StringBuilder("To ").append(ship)
                 .append(": not enough space in port").toString();

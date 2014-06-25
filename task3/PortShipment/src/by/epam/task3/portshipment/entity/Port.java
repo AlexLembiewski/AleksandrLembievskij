@@ -1,5 +1,8 @@
 package by.epam.task3.portshipment.entity;
 
+import by.epam.task3.portshipment.exception.PortException;
+import static by.epam.task3.portshipment.entity.EntityLiteral.*;
+
 /**
  *
  * @author Администратор
@@ -13,13 +16,20 @@ public class Port {
     public Port() {
     }
 
-    public Port(int capacity, int loading, int numberOfBerthes) {
-        this.capacity = capacity;
-        if (capacity < loading) {
-            this.loading = capacity;
-        } else {
-            this.loading = loading;
+    public Port(int capacity, int loading, int numberOfBerthes) throws PortException {
+        try {
+            if (capacity <= 0) {
+                throw new IllegalArgumentException(CAPACITY + capacity);
+            } else if (loading < 0 || numberOfBerthes <= 0) {
+                throw new IllegalArgumentException(LOADING + loading);
+            } else if (numberOfBerthes <= 0) {
+                throw new IllegalArgumentException(NUMBER_OF_BERTHES + loading);
+            }
+        } catch (IllegalArgumentException e) {
+            throw new PortException(INVALID_PARAMETER + e.getMessage());
         }
+        this.capacity = capacity;
+        this.loading = (loading > capacity) ? capacity : loading;
         this.numberOfBerthes = numberOfBerthes;
     }
 
@@ -50,6 +60,7 @@ public class Port {
     public int increaseLoading(int value) {
         return loading += value;
     }
+
     public int decreaseLoading(int value) {
         return loading -= value;
     }
@@ -57,9 +68,9 @@ public class Port {
     @Override
     public String toString() {
         return new StringBuilder(getClass().getName()).append('{')
-                .append("numberOfBerthes=").append(numberOfBerthes)
-                .append(", capacity=").append(capacity)
-                .append(", loading=").append(loading)
+                .append(NUMBER_OF_BERTHES).append(numberOfBerthes)
+                .append(",").append(CAPACITY).append(capacity)
+                .append(",").append(LOADING).append(loading)
                 .append('}').toString();
     }
 
@@ -92,7 +103,5 @@ public class Port {
         }
         return true;
     }
-    
-    
-    
+
 }

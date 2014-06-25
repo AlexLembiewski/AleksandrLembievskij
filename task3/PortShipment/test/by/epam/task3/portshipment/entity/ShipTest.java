@@ -6,6 +6,9 @@
 
 package by.epam.task3.portshipment.entity;
 
+import by.epam.task3.portshipment.exception.ShipException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -37,13 +40,17 @@ public class ShipTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        Port port = new Port();
-        Ship instance = new Ship(port, "Test", 12, 23);
-        Ship newInstance = new Ship(port, "Test", 12, 23);
-        boolean expResult = true;
-        boolean result = instance.equals(newInstance);
-        assertEquals(expResult, result);
+        try {
+            System.out.println("equals");
+            Port port = new Port();
+            Ship instance = new Ship(port, "Test", 12, 23);
+            Ship newInstance = new Ship(port, "Test", 12, 23);
+            boolean expResult = true;
+            boolean result = instance.equals(newInstance);
+            assertEquals(expResult, result);
+        } catch (ShipException ex) {
+            Logger.getLogger(ShipTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
