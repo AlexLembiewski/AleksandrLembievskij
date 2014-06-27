@@ -6,6 +6,7 @@
 
 package by.epam.task5.bankdeposit.model.command;
 
+import by.epam.task5.bankdeposit.controller.PageName;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,7 @@ public class NotFoundCommand implements ICommand{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("error", "command not found");
-        return "/error.jsp";
+        return PageName.ERROR_PAGE;
     }
     
 }

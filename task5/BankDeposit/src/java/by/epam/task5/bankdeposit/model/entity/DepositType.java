@@ -7,6 +7,11 @@ package by.epam.task5.bankdeposit.model.entity;
  */
 public enum DepositType {
 
-    POSTE_RESTANTE, URGENT, CALCULATED, CUMULATIVE, SAVING, METAL
+    POSTE_RESTANTE, 
+    URGENT, 
+    CALCULATED, 
+    CUMULATIVE, 
+    SAVING, 
+    METAL
 
 }

@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>error!</h1>
-        ${error}
+        <h1>Error!</h1>
+        Something goes wrong..
     </body>
 </html>

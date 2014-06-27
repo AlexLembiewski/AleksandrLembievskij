@@ -12,11 +12,19 @@ public class BankDeposit {
     private String country;
     private Enum type;
     private String depositor;
-    private int accoutnId;
+    private String accountId;
     private int amount;
     private int profitability;
     private int timeConstraints;
 
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+    
     public String getName() {
         return name;
     }
@@ -49,13 +57,7 @@ public class BankDeposit {
         this.depositor = depositor;
     }
 
-    public int getAccoutnId() {
-        return accoutnId;
-    }
-
-    public void setAccoutnId(int accoutnId) {
-        this.accoutnId = accoutnId;
-    }
+   
 
     public int getAmount() {
         return amount;
@@ -88,7 +90,7 @@ public class BankDeposit {
                 .append(", country=").append(country)
                 .append(", type=").append(type)
                 .append(", depositor=").append(depositor)
-                .append(", accoutnId=").append(accoutnId)
+                .append(", accoutnId=").append(accountId)
                 .append(", amount=").append(amount)
                 .append(", profitability=").append(profitability)
                 .append(", timeConstraints=").append(timeConstraints).append('}')
@@ -97,9 +99,10 @@ public class BankDeposit {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + Objects.hashCode(this.name);
-        hash = 11 * hash + this.accoutnId;
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 23 * hash + Objects.hashCode(this.depositor);
+        hash = 23 * hash + Objects.hashCode(this.accountId);
         return hash;
     }
 
@@ -118,11 +121,15 @@ public class BankDeposit {
         if (!Objects.equals(this.depositor, other.depositor)) {
             return false;
         }
-        if (this.accoutnId != other.accoutnId) {
+        if (!Objects.equals(this.accountId, other.accountId)) {
             return false;
         }
         return true;
     }
+
+   
+
+   
     
     
 }

@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import static by.epam.task3.portshipment.entity.EntityLiteral.*;
+import static by.epam.task3.portshipment.entity.Literal.*;
 
 /**
  *

@@ -15,21 +15,24 @@
         <title>JSP Page</title>
     </head>
     <body>
-
-        <form action="main" method="post">
-            <input type="hidden" name="command" value="sax"/>
-            <input type="button" value="SAX" onclick="submit()"/>
-        </form>
-
-        <form action="main" method="post">
-            <input type="hidden" name="command" value="dom"/>
-            <input type="button" value="DOM" onclick="submit()"/>
-        </form>
-
-        <form action="main" method="post">
-            <input type="hidden" name="command" value="stax"/>
-            <input type="button" value="StAX" onclick="submit()"/>
-        </form>
-
+        <table border="0">
+            <tbody>
+                <tr>
+                    <td> <form action="main" method="post">
+                            <input type="hidden" name="command" value="sax"/>
+                            <input type="button" value="Parsing using SAX" onclick="submit()"/>
+                        </form></td>
+                    <td>   <form action="main" method="post">
+                            <input type="hidden" name="command" value="dom"/>
+                            <input type="button" value="Parsing using DOM" onclick="submit()"/>
+                        </form></td>
+                    <td> <form action="main" method="post">
+                            <input type="hidden" name="command" value="stax"/>
+                            <input type="button" value="Parsing using StAX" onclick="submit()"/>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>

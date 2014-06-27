@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deposits xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="BankDeposit.xsd">
+    <bank>
+        <name>Priorbank</name>
+        <country>BY</country>
+        <type>calculated</type>
+        <depositor>Ivanov Ivan Ivanovich</depositor>
+        <accountId>N1234</accountId>
+        <amount>1000000</amount>
+        <profitability>10</profitability>
+        <timeConstraints>180</timeConstraints>
+    </bank>
+    <bank>
+        <name>Belarusbank</name>
+        <country>BY</country>
+        <type>saving</type>
+        <depositor>Petrov Petr Petrovich</depositor>
+        <accountId>N5678</accountId>
+        <amount>5000000</amount>
+        <profitability>12</profitability>
+        <timeConstraints>365</timeConstraints>
+    </bank>
+</deposits>

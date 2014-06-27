@@ -1,7 +1,7 @@
 package by.epam.task3.portshipment.entity;
 
 import by.epam.task3.portshipment.exception.PortException;
-import static by.epam.task3.portshipment.entity.EntityLiteral.*;
+import static by.epam.task3.portshipment.entity.Literal.*;
 
 /**
  *
